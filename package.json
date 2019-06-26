@@ -1,0 +1,33 @@
+{
+  "name": "@authbroker/mongo-benchmark",
+  "version": "0.0.1",
+  "description": "Paraffin Platform test and authBroker benchmark",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha './test/*.test.js' --color --no-timeouts --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/authbroker/benchmark.git"
+  },
+  "keywords": [
+    "mqtt",
+    "coap",
+    "http",
+    "broker",
+    "authentication",
+    "authorization",
+    "credintial"
+  ],
+  "author": "Hadi Mahdavi",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "4.1.1",
+    "mongodb": "3.2.7",
+    "fake": "0.2.2"
+  },
+  "devDependencies": {
+    "supertest": "4.0.1",
+    "mocha": "6.1.2"
+  }
+}

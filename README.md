@@ -1,2 +1,4 @@
-# demodb
-a test plan and demo maker for authBroker
+# Benchmark
+Test plan and demo maker for authBroker and Paraffin IoT Platform
+
+
