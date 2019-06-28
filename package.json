@@ -29,5 +29,8 @@
   "devDependencies": {
     "supertest": "4.0.1",
     "mocha": "6.1.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
