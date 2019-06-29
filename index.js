@@ -1,5 +1,5 @@
 var debug = require('debug')
-var pbkdf2 = require('./crypto')
+var pbkdf2 = require('./lib/crypto')
 var mongo = require('./lib/mongo')
 var validData = require('./lib/validDocs')
 
