@@ -1,6 +1,6 @@
 {
   "name": "@authbroker/mongo-benchmark",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Paraffin Platform and authBroker benchmark",
   "main": "index.js",
   "scripts": {
@@ -28,6 +28,10 @@
   },
   "devDependencies": {
     "supertest": "4.0.1",
-    "mocha": "6.1.2"
+    "mocha": "6.1.2",
+    "assert": "2.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
