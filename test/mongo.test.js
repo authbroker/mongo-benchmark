@@ -23,11 +23,12 @@ describe('Benchmark Verification', function () {
 
     beforeEach(function (done) {
       runTest = new test(opts)
-      validData = runTest.validData
+      validData = runTest.validData()
     })
 
-    it('should return clientID when call validData function', function () {
-      assert.equal('0050bdee-dd8b-43a3-8602-a10f1d0e2659', validData[0].clientId)
+    it('should return client setting when call getValidData function', function () {
+      assert.equal(validData[1], runTest.getValidData(validData[1].clientId))
+      done()
     })
   })
 })
