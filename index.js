@@ -1,4 +1,5 @@
 var debug = require('debug')
+var pbkdf2 = require('./crypto')
 var mongo = require('./lib/mongo')
 var validData = require('./lib/validDocs')
 
@@ -8,19 +9,26 @@ function mongoBenchmark(opts) {
 }
 
 mongoBenchmark.prototype.insertRandomData = function (recordsNo) {
-    saving(docs)
+    //
 }
 
 mongoBenchmark.prototype.insertValidData = function () {
-    this.mongo.saving(validData(this.opts.salt))
+    var beforeHash = this.validData()
+    var afterHash = beforeHash
+    for (i = 0; i < beforeHash.length; i++)
+        for (j = 0; j < beforeHash[i].adapters.length; j++)
+            if (afterHash[i].adapters[j].secret.type === 'pbkdf2')
+                afterHash[i].adapters[j].secret.pwdhash = pbkdf2(beforeHash[i].adapters[j].secret.pwdhash, this.opts.salt)
+
+    this.mongo.saving(afterHash)
 }
 
 mongoBenchmark.prototype.validData = function () {
-    return validData(this.opts.salt)
+    return validData()
 }
 
 mongoBenchmark.prototype.getValidData = function (clientId) {
-    var data = validData(this.opts.salt)
+    var data = validData()
     for (i = 0; i < data.length; i++)
         if (data[i].clientId === clientId)
             return data[i]
