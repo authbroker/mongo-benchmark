@@ -12,6 +12,12 @@ mongoBenchmark.prototype.insertRandomData = function (recordsNo) {
     //
 }
 
+mongoBenchmark.prototype.readData = function (clientId) {
+    let data = this.mongo.reading(clientId)
+    if (data.clientId) return data
+    else throw Error('Not found.')
+}
+
 mongoBenchmark.prototype.insertValidData = function () {
     var beforeHash = this.validData()
     var afterHash = beforeHash
