@@ -17,7 +17,8 @@
     "broker",
     "authentication",
     "authorization",
-    "credintial"
+    "credintial",
+    "benchmark"
   ],
   "author": "Hadi Mahdavi",
   "license": "MIT",
