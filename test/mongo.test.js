@@ -25,6 +25,8 @@ describe('Benchmark Verification', function () {
       runTest = new test(opts)
       validData = runTest.validData()
       console.log(validData)
+      console.log('+++')
+      console.log(runTest.getValidData(validData[1].clientId))
     })
 
     it('should return client setting when call getValidData function', function () {
