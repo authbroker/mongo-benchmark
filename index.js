@@ -12,10 +12,11 @@ mongoBenchmark.prototype.insertRandomData = function (recordsNo) {
     //
 }
 
-mongoBenchmark.prototype.readData = function (clientId) {
+mongoBenchmark.prototype.readData = async function (clientId) {
+    return new Promise(resolve => {
     let data = this.mongo.reading(clientId)
-    if (data.clientId) return data
-    else throw Error('Not found.')
+    resolve(data)
+    })
 }
 
 mongoBenchmark.prototype.insertValidData = function () {
@@ -26,7 +27,7 @@ mongoBenchmark.prototype.insertValidData = function () {
             if (afterHash[i].adapters[j].secret.type === 'pbkdf2')
                 afterHash[i].adapters[j].secret.pwdhash = pbkdf2(beforeHash[i].adapters[j].secret.pwdhash, this.opts.salt)
 
-    this.mongo.saving(afterHash)
+    return this.mongo.saving(afterHash)
 }
 
 mongoBenchmark.prototype.validData = function () {
