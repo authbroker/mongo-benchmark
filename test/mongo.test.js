@@ -21,19 +21,27 @@ describe('Benchmark Verification', function () {
 
   describe('validData function', function () {
 
-    beforeEach(function (done) {
+    before(function (done) {
       runTest = new test(opts)
+      runTest.insertValidData()
       validData = runTest.validData()
+      done()
     })
 
-    it('should return client setting when call getValidData function', function () {
-      assert.equal(validData[1], runTest.getValidData(validData[1].clientId))
+
+    it('should return client setting when call getValidData function', function (done) {
+
+      var actual = runTest.getValidData(validData[1].clientId)
+      assert(validData[1].clientId === actual.clientId, 'Valid Data is valid!')
       done()
     })
 
     it('should return client setting when call readData function', function () {
-      assert.equal(validData[1], runTest.readData(validData[1].clientId))
-      done()
+      new Promise(resolve => {
+        var actual = runTest.readData(validData[1].clientId)
+        resolve(assert(validData[1].clientId != actual.clientId, 'Read data is valid!'))
+        done()
+      })
     })
   })
 })

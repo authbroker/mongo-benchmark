@@ -4,7 +4,7 @@
   "description": "Paraffin Platform and authBroker benchmark",
   "main": "index.js",
   "scripts": {
-    "test": "mocha './test/*.test.js' --color --no-timeouts --exit"
+    "test": "mocha --recursive --bail --reporter spec test"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,8 @@
     "broker",
     "authentication",
     "authorization",
-    "credintial"
+    "credintial",
+    "benchmark"
   ],
   "author": "Hadi Mahdavi",
   "license": "MIT",
