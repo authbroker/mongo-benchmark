@@ -31,14 +31,14 @@ describe('Benchmark Verification', function () {
       //assert.equal(validData[1], runTest.getValidData(validData[1].clientId))
       console.log(runTest.getValidData(validData[1].clientId))
       expect(validData[1]).to.eql(runTest.getValidData(validData[1].clientId))
-      done()
+      //done()
     })
 
     it('should return client setting when call readData function', function () {
       //assert.equal(validData[1], runTest.readData(validData[1].clientId))
       console.log(runTest.readData(validData[1].clientId))
       expert(validData[1]).to.eql(runTest.readData(validData[1].clientId))
-      done()
+      //done()
     })
   })
 })
