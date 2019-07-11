@@ -4,6 +4,7 @@ var test = require('../index')
 var opts = {
   db: {
     url: 'mongodb://localhost:27017/paraffin',
+    dbName: 'paraffin',
     collectionName: 'authBroker',
     methodology: 'vertical'
   },
@@ -16,32 +17,49 @@ var opts = {
 }
 
 describe('Benchmark Verification', function () {
-  var runTest = new test(opts)
   var validData
+  var runTest
+  var insert = false
 
   describe('validData function', function () {
 
     before(function (done) {
       runTest = new test(opts)
-      runTest.insertValidData()
-      validData = runTest.validData()
       done()
     })
 
 
-    it('should return client setting when call getValidData function', function (done) {
 
-      var actual = runTest.getValidData(validData[1].clientId)
-      assert(validData[1].clientId === actual.clientId, 'Valid Data is valid!')
-      done()
-    })
-
-    it('should return client setting when call readData function', function () {
-      new Promise(resolve => {
-        var actual = runTest.readData(validData[1].clientId)
-        resolve(assert(validData[1].clientId != actual.clientId, 'Read data is valid!'))
-        done()
+    it('Should return true if insert valid data', function () {
+      runTest.insertValidData(function (callback) {
+        assert(callback.result.ok, 'true is expected.')
       })
     })
+
+
+    it('should return client setting when call getValidData function', function () {
+      validData = runTest.validData()
+      var actual = runTest.getValidData(validData[1].clientId)
+      assert(validData[1].clientId === actual.clientId, 'Valid Data is valid!')
+    })
+
+
+    it('should return client setting when call readData function', function () {
+      //this.timeout(3000)
+      setTimeout(function () {
+        runTest.readData(validData[1].clientId, function (callback) {
+          console.log(callback)
+          assert(callback && (validData[1].clientId === callback.clientId), 'Read data is invalid!')
+        })
+      }, 3000)
+    })
+
+
+    it('Should return true if drop collection is done', function () {
+      runTest.drop(opts.db.collectionName, function (callback) {
+        assert(callback, 'true is expected.')
+      })
+    })
+
   })
 })
