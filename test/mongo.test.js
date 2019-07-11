@@ -45,13 +45,9 @@ describe('Benchmark Verification', function () {
 
 
     it('should return client setting when call readData function', function () {
-      //this.timeout(3000)
-      setTimeout(function () {
-        runTest.readData(validData[1].clientId, function (callback) {
-          console.log(callback)
-          assert(callback && (validData[1].clientId === callback.clientId), 'Read data is invalid!')
-        })
-      }, 3000)
+      runTest.readData(validData[1].clientId, function (callback) {
+        assert(callback && (validData[1].clientId === callback.clientId), 'Read data is invalid!')
+      })
     })
 
 
@@ -60,6 +56,7 @@ describe('Benchmark Verification', function () {
         assert(callback, 'true is expected.')
       })
     })
+
 
   })
 })
