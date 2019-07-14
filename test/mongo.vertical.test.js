@@ -48,7 +48,7 @@ describe('Benchmark Verification', function () {
         it('Should return true if insert valid data', function () {
             runTest.insertValidData(function (result) {
                 //console.log(result)
-                runTest.readData({clientId: validData[1].clientId, realm:validData[1].realm }, function (callback) {
+                runTest.readData({ clientId: validData[1].clientId, realm: validData[1].realm }, function (callback) {
                     //console.log(callback)
                     assert(validData[1].clientId === callback.clientId, 'Read data is invalid!')
                 })
@@ -72,7 +72,7 @@ describe('Benchmark Verification', function () {
         })
 
         */
-       
+
     })
 
 

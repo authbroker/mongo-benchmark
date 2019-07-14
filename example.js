@@ -23,7 +23,7 @@ console.log(validData)
 
 // save valid demo data to db
 demo.insertValidData(function () {
-    demo.readData(validData[1].clientId, function (callback) {
+    demo.readData({ clientId: validData[1].clientId, realm: validData[1].realm }, function (callback) {
         console.log('clientID -> ' + validData[1].clientId + ' is searching in db:')
         console.log(callback)
     })
