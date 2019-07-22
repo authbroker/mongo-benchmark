@@ -12,6 +12,7 @@ describe('Benchmark Verification', function () {
 
         before(function (done) {
             opts = {
+                type: 'mongo',
                 db: {
                     url: 'mongodb://localhost:27017/paraffin',
                     dbName: 'paraffin',
