@@ -2,7 +2,7 @@
 
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![Build Status](https://travis-ci.org/authbroker/mongo-benchmark.svg)](https://travis-ci.com/authbroker/mongo-benchmark)
 
-Test plan and demo maker for authBroker and Paraffin IoT Platform
+Test plan and demo maker for authBroker and Paraffin IoT Platform. If you can run by Parse method, be sure apiserver is running.
 
 ``` js
 
@@ -10,7 +10,7 @@ var benchmark = require('@authbroker/mongo-benchmark')
 
 var opts = {
     type: 'parse',
-    db: { //this uses for mongo type
+    db: { //this is used for mongo type
         url: 'mongodb://localhost:27017/paraffin',
         collectionName: 'authBroker',
         methodology: 'vertical'
