@@ -10,7 +10,7 @@ var benchmark = require('@authbroker/mongo-benchmark')
 
 var opts = {
     type: 'parse',
-    db: { //this uses for mongo type
+    db: { //this is used for mongo type
         url: 'mongodb://localhost:27017/paraffin',
         collectionName: 'authBroker',
         methodology: 'vertical'
