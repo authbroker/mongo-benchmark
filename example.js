@@ -1,10 +1,18 @@
-var benchmark = require('@authbroker/mongo-benchmark')
+var benchmark = require('./index')
 
 var opts = {
+    type: 'parse',
     db: {
         url: 'mongodb://localhost:27017/paraffin',
         collectionName: 'authBroker',
         methodology: 'vertical'
+    },
+    parse: {
+        serverURL: 'http://localhost:5000/api',
+        appId: 'APP_ID',
+        javascriptKey: 'JAVASCRIPT_KEY',
+        masterKey: 'MASTER_KEY',
+        methodology: 'horizontal',
     },
     salt: {
         iterations: 10,

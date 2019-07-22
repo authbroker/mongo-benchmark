@@ -1,11 +1,16 @@
 var debug = require('debug')
 var pbkdf2 = require('./lib/crypto')
-var mongo = require('./lib/mongo')
 var validDoc = require('./lib/validDocs')
 
 function mongoBenchmark(opts) {
     this.opts = opts
-    this.mongo = new mongo(opts.db)
+    if (opts.type === 'parse')
+        var mongo = require('./lib/parse')
+    else
+        var mongo = require('./lib/mongo')
+
+    this.mongo = new mongo(opts)
+
 }
 
 mongoBenchmark.prototype.insertRandomData = function (recordsNo) {

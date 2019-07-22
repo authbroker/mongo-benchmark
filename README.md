@@ -9,34 +9,47 @@ Test plan and demo maker for authBroker and Paraffin IoT Platform
 var benchmark = require('@authbroker/mongo-benchmark')
 
 var opts = {
-  db: {
-    url: 'mongodb://localhost:27017/paraffin',
-    collectionName: 'authBroker',
-    methodology: 'vertical'
-  },
-  salt: {
-    iterations: 10,
-    hashBytes: 64,
-    digest: 'sha512',
-    salt: 'salt'
-  }
+    type: 'parse',
+    db: { //this uses for mongo type
+        url: 'mongodb://localhost:27017/paraffin',
+        collectionName: 'authBroker',
+        methodology: 'vertical'
+    },
+    parse: {
+        serverURL: 'http://localhost:5000/api',
+        appId: 'APP_ID',
+        javascriptKey: 'JAVASCRIPT_KEY',
+        masterKey: 'MASTER_KEY',
+        methodology: 'horizontal',
+    },
+    salt: {
+        iterations: 10,
+        hashBytes: 64,
+        digest: 'sha512',
+        salt: 'salt'
+    }
 
 }
 var demo = new benchmark(opts)
 
 // print valid demo data list
-console.log(demo.validData())
+console.log('print valid demo data list:')
+var validData = demo.validData()
+console.log(validData)
 
 // save valid demo data to db
-demo.insertValidData()
+demo.insertValidData(function () {
+    demo.readData({ clientId: validData[1].clientId, realm: validData[1].realm }, function (callback) {
+        console.log('clientID -> ' + validData[1].clientId + ' is searching in db:')
+        console.log(callback)
+    })
+})
 
 ```
-
 
 ## Authors / Contributors
 
 * [Hadi Mahdavi](https://twitter.com/kamerdack)
-
 
 ## Copyright
 
