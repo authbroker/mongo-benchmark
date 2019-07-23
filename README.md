@@ -1,4 +1,4 @@
-# Mongo Benchmark for authBroker
+# Benchmark for authBroker
 
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![Build Status](https://travis-ci.org/authbroker/mongo-benchmark.svg)](https://travis-ci.com/authbroker/mongo-benchmark)
 
