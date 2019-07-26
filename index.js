@@ -27,8 +27,8 @@ mongoBenchmark.prototype.drop = function (collectionName, cb) {
 
 
 mongoBenchmark.prototype.readData = function (client, cb) {
-    this.mongo.reading({ realm: client.realm, clientId: client.clientId }, function (err, callback) {
-        cb(callback)
+    this.mongo.reading({ realm: client.realm, clientId: client.clientId }, function (err, res) {
+        cb(err, res)
     })
 }
 
@@ -41,7 +41,7 @@ mongoBenchmark.prototype.insertValidData = function (callback) {
                 afterHash[i].adapters[j].secret.pwdhash = pbkdf2(beforeHash[i].adapters[j].secret.pwdhash, this.opts.salt)
         //console.log(afterHash[i])
         this.mongo.saving(afterHash[i], function (err, res) {
-            callback(res)
+            callback(err, res)
         })
     }
 }
