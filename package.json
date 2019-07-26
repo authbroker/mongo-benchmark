@@ -31,7 +31,10 @@
   "devDependencies": {
     "supertest": "4.0.1",
     "mocha": "6.1.2",
-    "assert": "2.0.0"
+    "assert": "2.0.0",
+    "parse-server": "3.6.0",
+    "express": "4.17.1",
+    "request": "2.88.0"
   },
   "publishConfig": {
     "access": "public"

@@ -30,9 +30,18 @@ var validData = demo.validData()
 console.log(validData)
 
 // save valid demo data to db
-demo.insertValidData(function () {
-    demo.readData({ clientId: validData[1].clientId, realm: validData[1].realm }, function (callback) {
-        console.log('clientID -> ' + validData[1].clientId + ' is searching in db:')
-        console.log(callback)
+demo.insertValidData(function (err, res) {
+    if (err) {
+        console.log(err)
+        throw err
+    }
+    console.log(res)
+    demo.readData({ clientId: validData[1].clientId, realm: validData[1].realm }, function (err, res) {
+        if (err) {
+            console.log(err)
+            throw err
+        }
+        console.log('+---+')
+        console.log(res)
     })
 })
